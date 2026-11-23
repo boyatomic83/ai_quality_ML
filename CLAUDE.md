@@ -50,3 +50,7 @@ Daily AQI forecasting (7-day horizon) for 9 Indian cities. Built in stages (EDA 
 - Frontend: `cd frontend && npx vercel deploy --prod --yes --token $VERCEL_TOKEN --build-env NEXT_PUBLIC_API_URL=https://aqi-forecast-api.vercel.app`
 - Tokens live in root `.env` (gitignored); read with grep/cut, never `source` it. `vercel link` overwrites frontend/.env.local (adds VERCEL_OIDC_TOKEN) → reset NEXT_PUBLIC_API_URL=/backend for local dev
 - Cold start ~7s on first API request, then ~0.5s
+
+## Docs (Stage 6)
+- README.md: results tables, mermaid architecture, run-locally, resume bullets (numbers from models/metrics.json; update README if retrained)
+- Screenshots in `docs/screenshots/` taken from the live site with Playwright (scratch venv, Python 3.13; use element screenshots for Recharts, full_page on narrow viewports catches charts mid-resize)
