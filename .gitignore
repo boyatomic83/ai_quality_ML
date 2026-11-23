@@ -1,0 +1,24 @@
+# Data (raw Kaggle CSV is not redistributed)
+data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Misc
+*.pkl
+.DS_Store
