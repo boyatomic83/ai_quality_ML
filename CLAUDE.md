@@ -26,3 +26,11 @@ Daily AQI forecasting (7-day horizon) for 9 Indian cities. Built in stages (EDA 
 - `src/evaluate.py` — 4 quarterly walk-forward folds, Jul 2019 – Jul 2020
 - Result: LightGBM MAE 30.25 vs SARIMA 31.89 vs Naive 35.78; band coverage 72% (nominal 80%)
 - Data ends 2020-07-01, so "forecast" = 2020-07-02..08
+
+## Backend (Stage 3)
+- `backend/app/main.py` (routes, CORS via ALLOWED_ORIGINS env, default `*`), `predictor.py` (loads models/ once, precomputes all 7-day forecasts at startup), `schemas.py` (Pydantic), `aqi.py` (CPCB bands, value rounded first)
+- Reuses `src.features`/`src.models` so serving uses identical feature code; statsmodels import in `src/models.py` is lazy so the image doesn't need it
+- Run: `.venv/bin/uvicorn backend.app.main:app --reload --port 7860`; tests: `.venv/bin/pytest` (pytest.ini sets pythonpath)
+- /history serves out-of-sample h=1 walk-forward predictions (backtest_h1.csv), max 365 days
+- Docker: build from repo root `docker build -f backend/Dockerfile -t aqi-api .`; runs as uid 1000 on port 7860 (HF Spaces)
+- Codespace quirk: container HTTPS hangs (MTU). Build locally with `docker network create --opt com.docker.network.driver.mtu=1200 lowmtu` + `DOCKER_BUILDKIT=0 docker build --network lowmtu ...`

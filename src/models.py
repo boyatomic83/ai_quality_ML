@@ -12,8 +12,6 @@ import warnings
 import lightgbm as lgb
 import numpy as np
 import pandas as pd
-from statsmodels.tsa.statespace.sarimax import SARIMAX
-
 from src.features import FEATURE_COLS
 
 # ---------------------------------------------------------------- baselines
@@ -43,6 +41,9 @@ SARIMA_SEASONAL = (1, 0, 1, 7)
 
 def fit_sarima(series: pd.Series):
     """Fit SARIMA on one city's daily AQI series (NaNs are handled by the Kalman filter)."""
+    # Imported here, not at the top, so the API (which only uses LightGBM)
+    # does not need statsmodels/scipy installed -> smaller Docker image.
+    from statsmodels.tsa.statespace.sarimax import SARIMAX
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         model = SARIMAX(np.log1p(series), order=SARIMA_ORDER,
