@@ -21,7 +21,7 @@ const STEPS = [
   },
   {
     title: "6. Serving",
-    body: "A FastAPI backend (Docker, Hugging Face Spaces) serves forecasts as JSON. This Next.js dashboard on Vercel draws the charts.",
+    body: "A FastAPI backend (a Vercel Python function, also packaged as a Docker image) serves forecasts as JSON. This Next.js dashboard on Vercel draws the charts.",
   },
 ];
 

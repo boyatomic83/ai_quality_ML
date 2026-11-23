@@ -22,3 +22,7 @@ out/
 # Misc
 *.pkl
 .DS_Store
+
+# Deploy staging
+build/
+.vercel/

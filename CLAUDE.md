@@ -41,3 +41,12 @@ Daily AQI forecasting (7-day horizon) for 9 Indian cities. Built in stages (EDA 
 - API base = `NEXT_PUBLIC_API_URL`. In Codespaces use `/backend` (`.env.local`) → Next rewrite proxies to `API_PROXY_TARGET` (default localhost:7860), so the API port can stay private
 - Run: `cd frontend && npm run dev`; check: `npx tsc --noEmit && npm run lint && npm run build`
 - Recharts ResponsiveContainer inside CSS grid needs `min-w-0` on the grid item (Card has it) or charts collapse
+
+## Deployment (Stage 5)
+- Live: frontend https://aqi-forecast-eta.vercel.app · API https://aqi-forecast-api.vercel.app (both Vercel projects, account andromeda)
+- HF Docker Spaces now need PRO (402 on create) → user chose Vercel Python function for the API. `deploy/deploy_hf.py` still works if PRO is bought
+- API: `bash deploy/build_vercel_api.sh` → `build/aqi-forecast-api/` (only src/, backend/app, models/, app.py entrypoint, .python-version 3.13) → `cd build/aqi-forecast-api && npx vercel deploy --prod --yes --token $VERCEL_TOKEN`
+- Vercel Python lacks libgomp (LightGBM crashes on import): build script copies sklearn's vendored libgomp, patchelf --set-soname libgomp.so.1, app.py preloads it with ctypes RTLD_GLOBAL. Deps ~371MB (limit 500MB for Python)
+- Frontend: `cd frontend && npx vercel deploy --prod --yes --token $VERCEL_TOKEN --build-env NEXT_PUBLIC_API_URL=https://aqi-forecast-api.vercel.app`
+- Tokens live in root `.env` (gitignored); read with grep/cut, never `source` it. `vercel link` overwrites frontend/.env.local (adds VERCEL_OIDC_TOKEN) → reset NEXT_PUBLIC_API_URL=/backend for local dev
+- Cold start ~7s on first API request, then ~0.5s

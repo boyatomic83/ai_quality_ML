@@ -32,7 +32,7 @@ app = FastAPI(
 )
 
 # CORS: the browser blocks a page on one domain (Vercel) from calling an API
-# on another (Hugging Face) unless the API allows it. The API is read-only and
+# on another (the API host) unless the API allows it. The API is read-only and
 # public, so "*" is fine; set ALLOWED_ORIGINS to lock it to the frontend URL.
 origins = os.getenv("ALLOWED_ORIGINS", "*").split(",")
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["GET"],
@@ -40,6 +40,10 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["GET"],
 
 
 def get_predictor() -> Predictor:
+    # Normally loaded by `lifespan` at startup. Some serverless platforms
+    # (e.g. Vercel) may skip startup events, so load lazily as a fallback.
+    if "predictor" not in state:
+        state["predictor"] = Predictor()
     return state["predictor"]
 
 

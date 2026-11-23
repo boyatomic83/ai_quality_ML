@@ -19,3 +19,7 @@ uvicorn[standard]==0.34.0
 pydantic==2.14.4
 pytest==8.3.4
 httpx==0.28.1
+
+# Deployment
+huggingface_hub==0.27.1
+patchelf==0.17.2.1  # used by deploy/build_vercel_api.sh
