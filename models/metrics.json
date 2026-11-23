@@ -1,0 +1,511 @@
+{
+  "best_model": "LightGBM",
+  "selection_metric": "MAE",
+  "validation": {
+    "method": "walk-forward, expanding window, 4 quarterly folds",
+    "folds": [
+      {
+        "start": "2019-07-01",
+        "end": "2019-09-30"
+      },
+      {
+        "start": "2019-10-01",
+        "end": "2019-12-31"
+      },
+      {
+        "start": "2020-01-01",
+        "end": "2020-03-31"
+      },
+      {
+        "start": "2020-04-01",
+        "end": "2020-07-01"
+      }
+    ],
+    "horizon_days": 7,
+    "n_test_rows": 22365
+  },
+  "overall": {
+    "Naive": {
+      "MAE": 35.78,
+      "RMSE": 57.96,
+      "MAPE": 28.65
+    },
+    "Seasonal Naive": {
+      "MAE": 41.71,
+      "RMSE": 65.75,
+      "MAPE": 33.6
+    },
+    "SARIMA": {
+      "MAE": 31.89,
+      "RMSE": 51.05,
+      "MAPE": 25.14
+    },
+    "LightGBM": {
+      "MAE": 30.25,
+      "RMSE": 47.18,
+      "MAPE": 25.84
+    }
+  },
+  "per_city": {
+    "Amritsar": {
+      "Naive": {
+        "MAE": 39.5,
+        "RMSE": 66.11,
+        "MAPE": 40.4
+      },
+      "Seasonal Naive": {
+        "MAE": 44.54,
+        "RMSE": 71.37,
+        "MAPE": 44.78
+      },
+      "SARIMA": {
+        "MAE": 33.81,
+        "RMSE": 55.35,
+        "MAPE": 33.01
+      },
+      "LightGBM": {
+        "MAE": 32.97,
+        "RMSE": 53.51,
+        "MAPE": 33.77
+      }
+    },
+    "Bengaluru": {
+      "Naive": {
+        "MAE": 12.21,
+        "RMSE": 17.82,
+        "MAPE": 15.27
+      },
+      "Seasonal Naive": {
+        "MAE": 14.08,
+        "RMSE": 20.33,
+        "MAPE": 17.67
+      },
+      "SARIMA": {
+        "MAE": 10.58,
+        "RMSE": 15.34,
+        "MAPE": 13.29
+      },
+      "LightGBM": {
+        "MAE": 10.63,
+        "RMSE": 15.64,
+        "MAPE": 13.58
+      }
+    },
+    "Chennai": {
+      "Naive": {
+        "MAE": 24.16,
+        "RMSE": 40.82,
+        "MAPE": 26.07
+      },
+      "Seasonal Naive": {
+        "MAE": 28.23,
+        "RMSE": 46.86,
+        "MAPE": 30.5
+      },
+      "SARIMA": {
+        "MAE": 20.44,
+        "RMSE": 33.32,
+        "MAPE": 21.82
+      },
+      "LightGBM": {
+        "MAE": 21.45,
+        "RMSE": 34.81,
+        "MAPE": 23.52
+      }
+    },
+    "Delhi": {
+      "Naive": {
+        "MAE": 57.94,
+        "RMSE": 83.74,
+        "MAPE": 31.05
+      },
+      "Seasonal Naive": {
+        "MAE": 68.83,
+        "RMSE": 96.9,
+        "MAPE": 36.59
+      },
+      "SARIMA": {
+        "MAE": 52.46,
+        "RMSE": 74.95,
+        "MAPE": 27.99
+      },
+      "LightGBM": {
+        "MAE": 46.19,
+        "RMSE": 65.6,
+        "MAPE": 27.1
+      }
+    },
+    "Gurugram": {
+      "Naive": {
+        "MAE": 54.73,
+        "RMSE": 80.93,
+        "MAPE": 35.73
+      },
+      "Seasonal Naive": {
+        "MAE": 66.19,
+        "RMSE": 94.96,
+        "MAPE": 43.04
+      },
+      "SARIMA": {
+        "MAE": 49.96,
+        "RMSE": 73.04,
+        "MAPE": 32.24
+      },
+      "LightGBM": {
+        "MAE": 44.97,
+        "RMSE": 64.68,
+        "MAPE": 32.07
+      }
+    },
+    "Hyderabad": {
+      "Naive": {
+        "MAE": 19.02,
+        "RMSE": 26.6,
+        "MAPE": 23.72
+      },
+      "Seasonal Naive": {
+        "MAE": 23.57,
+        "RMSE": 31.87,
+        "MAPE": 29.86
+      },
+      "SARIMA": {
+        "MAE": 17.31,
+        "RMSE": 23.53,
+        "MAPE": 22.03
+      },
+      "LightGBM": {
+        "MAE": 17.64,
+        "RMSE": 23.11,
+        "MAPE": 24.21
+      }
+    },
+    "Lucknow": {
+      "Naive": {
+        "MAE": 45.44,
+        "RMSE": 65.24,
+        "MAPE": 29.5
+      },
+      "Seasonal Naive": {
+        "MAE": 51.4,
+        "RMSE": 72.07,
+        "MAPE": 33.76
+      },
+      "SARIMA": {
+        "MAE": 42.4,
+        "RMSE": 58.52,
+        "MAPE": 27.52
+      },
+      "LightGBM": {
+        "MAE": 38.27,
+        "RMSE": 52.88,
+        "MAPE": 26.89
+      }
+    },
+    "Patna": {
+      "Naive": {
+        "MAE": 37.67,
+        "RMSE": 56.04,
+        "MAPE": 21.59
+      },
+      "Seasonal Naive": {
+        "MAE": 41.73,
+        "RMSE": 60.6,
+        "MAPE": 24.62
+      },
+      "SARIMA": {
+        "MAE": 34.37,
+        "RMSE": 51.21,
+        "MAPE": 19.74
+      },
+      "LightGBM": {
+        "MAE": 33.86,
+        "RMSE": 48.71,
+        "MAPE": 20.44
+      }
+    },
+    "Visakhapatnam": {
+      "Naive": {
+        "MAE": 31.33,
+        "RMSE": 47.06,
+        "MAPE": 34.53
+      },
+      "Seasonal Naive": {
+        "MAE": 36.84,
+        "RMSE": 53.94,
+        "MAPE": 41.6
+      },
+      "SARIMA": {
+        "MAE": 25.67,
+        "RMSE": 38.62,
+        "MAPE": 28.61
+      },
+      "LightGBM": {
+        "MAE": 26.28,
+        "RMSE": 38.98,
+        "MAPE": 30.97
+      }
+    }
+  },
+  "per_horizon": {
+    "1": {
+      "Naive": {
+        "MAE": 21.25,
+        "RMSE": 34.95,
+        "MAPE": 16.81
+      },
+      "Seasonal Naive": {
+        "MAE": 41.46,
+        "RMSE": 65.25,
+        "MAPE": 33.44
+      },
+      "SARIMA": {
+        "MAE": 21.19,
+        "RMSE": 33.98,
+        "MAPE": 16.56
+      },
+      "LightGBM": {
+        "MAE": 21.35,
+        "RMSE": 33.63,
+        "MAPE": 17.96
+      }
+    },
+    "2": {
+      "Naive": {
+        "MAE": 30.7,
+        "RMSE": 49.73,
+        "MAPE": 24.6
+      },
+      "Seasonal Naive": {
+        "MAE": 41.54,
+        "RMSE": 65.38,
+        "MAPE": 33.52
+      },
+      "SARIMA": {
+        "MAE": 28.81,
+        "RMSE": 45.71,
+        "MAPE": 22.68
+      },
+      "LightGBM": {
+        "MAE": 27.78,
+        "RMSE": 43.27,
+        "MAPE": 23.65
+      }
+    },
+    "3": {
+      "Naive": {
+        "MAE": 36.29,
+        "RMSE": 57.99,
+        "MAPE": 29.14
+      },
+      "Seasonal Naive": {
+        "MAE": 41.61,
+        "RMSE": 65.53,
+        "MAPE": 33.58
+      },
+      "SARIMA": {
+        "MAE": 32.49,
+        "RMSE": 51.25,
+        "MAPE": 25.59
+      },
+      "LightGBM": {
+        "MAE": 30.59,
+        "RMSE": 47.27,
+        "MAPE": 26.19
+      }
+    },
+    "4": {
+      "Naive": {
+        "MAE": 39.37,
+        "RMSE": 62.21,
+        "MAPE": 31.42
+      },
+      "Seasonal Naive": {
+        "MAE": 41.79,
+        "RMSE": 65.8,
+        "MAPE": 33.7
+      },
+      "SARIMA": {
+        "MAE": 34.12,
+        "RMSE": 53.96,
+        "MAPE": 26.87
+      },
+      "LightGBM": {
+        "MAE": 32.08,
+        "RMSE": 49.42,
+        "MAPE": 27.52
+      }
+    },
+    "5": {
+      "Naive": {
+        "MAE": 40.64,
+        "RMSE": 64.21,
+        "MAPE": 32.63
+      },
+      "Seasonal Naive": {
+        "MAE": 41.9,
+        "RMSE": 66.03,
+        "MAPE": 33.74
+      },
+      "SARIMA": {
+        "MAE": 35.11,
+        "RMSE": 55.4,
+        "MAPE": 27.73
+      },
+      "LightGBM": {
+        "MAE": 32.98,
+        "RMSE": 50.72,
+        "MAPE": 28.33
+      }
+    },
+    "6": {
+      "Naive": {
+        "MAE": 41.37,
+        "RMSE": 65.16,
+        "MAPE": 33.17
+      },
+      "Seasonal Naive": {
+        "MAE": 41.89,
+        "RMSE": 66.13,
+        "MAPE": 33.67
+      },
+      "SARIMA": {
+        "MAE": 35.81,
+        "RMSE": 56.43,
+        "MAPE": 28.31
+      },
+      "LightGBM": {
+        "MAE": 33.57,
+        "RMSE": 51.65,
+        "MAPE": 28.75
+      }
+    },
+    "7": {
+      "Naive": {
+        "MAE": 41.82,
+        "RMSE": 66.15,
+        "MAPE": 33.57
+      },
+      "Seasonal Naive": {
+        "MAE": 41.82,
+        "RMSE": 66.15,
+        "MAPE": 33.57
+      },
+      "SARIMA": {
+        "MAE": 36.41,
+        "RMSE": 57.5,
+        "MAPE": 28.8
+      },
+      "LightGBM": {
+        "MAE": 34.0,
+        "RMSE": 52.3,
+        "MAPE": 28.97
+      }
+    }
+  },
+  "per_fold": {
+    "2019-07-01..2019-09-30": {
+      "Naive": {
+        "MAE": 21.43,
+        "RMSE": 33.73,
+        "MAPE": 25.06
+      },
+      "Seasonal Naive": {
+        "MAE": 25.33,
+        "RMSE": 38.65,
+        "MAPE": 29.83
+      },
+      "SARIMA": {
+        "MAE": 18.83,
+        "RMSE": 27.77,
+        "MAPE": 22.85
+      },
+      "LightGBM": {
+        "MAE": 19.4,
+        "RMSE": 27.96,
+        "MAPE": 24.48
+      }
+    },
+    "2019-10-01..2019-12-31": {
+      "Naive": {
+        "MAE": 59.58,
+        "RMSE": 86.93,
+        "MAPE": 34.95
+      },
+      "Seasonal Naive": {
+        "MAE": 73.03,
+        "RMSE": 102.05,
+        "MAPE": 42.46
+      },
+      "SARIMA": {
+        "MAE": 56.57,
+        "RMSE": 80.59,
+        "MAPE": 30.81
+      },
+      "LightGBM": {
+        "MAE": 49.28,
+        "RMSE": 70.36,
+        "MAPE": 31.27
+      }
+    },
+    "2020-01-01..2020-03-31": {
+      "Naive": {
+        "MAE": 41.12,
+        "RMSE": 58.79,
+        "MAPE": 31.41
+      },
+      "Seasonal Naive": {
+        "MAE": 44.98,
+        "RMSE": 63.08,
+        "MAPE": 35.86
+      },
+      "SARIMA": {
+        "MAE": 33.65,
+        "RMSE": 47.64,
+        "MAPE": 26.44
+      },
+      "LightGBM": {
+        "MAE": 34.25,
+        "RMSE": 48.19,
+        "MAPE": 27.37
+      }
+    },
+    "2020-04-01..2020-07-01": {
+      "Naive": {
+        "MAE": 21.05,
+        "RMSE": 35.92,
+        "MAPE": 23.21
+      },
+      "Seasonal Naive": {
+        "MAE": 23.55,
+        "RMSE": 37.4,
+        "MAPE": 26.29
+      },
+      "SARIMA": {
+        "MAE": 18.53,
+        "RMSE": 29.72,
+        "MAPE": 20.48
+      },
+      "LightGBM": {
+        "MAE": 18.12,
+        "RMSE": 29.12,
+        "MAPE": 20.24
+      }
+    }
+  },
+  "lightgbm_interval": {
+    "nominal": 0.8,
+    "empirical_coverage": 0.721
+  },
+  "cities": [
+    "Amritsar",
+    "Bengaluru",
+    "Chennai",
+    "Delhi",
+    "Gurugram",
+    "Hyderabad",
+    "Lucknow",
+    "Patna",
+    "Visakhapatnam"
+  ],
+  "data_end_date": "2020-07-01"
+}
