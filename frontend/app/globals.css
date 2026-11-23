@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by a `dark` class on <html> (set by next-themes),
+   so the toggle works regardless of the OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Colour tokens. Components use these names (bg-surface, text-muted, ...)
+   so light/dark values only live here. */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f1f3f6;
+  --border: #e3e6eb;
+  --text: #0f172a;
+  --muted: #5b6474;
+  --accent: #2a78d6;
+  /* chart roles */
+  --chart-pred: #2a78d6;
+  --chart-actual: #eb6834;
+  --chart-band: #2a78d6;
+  --chart-grid: #e3e6eb;
+  --chart-axis: #5b6474;
+}
+
+.dark {
+  --bg: #0b0f17;
+  --surface: #131925;
+  --surface-2: #1b2230;
+  --border: #263042;
+  --text: #e8ecf3;
+  --muted: #9aa4b5;
+  --accent: #3987e5;
+  --chart-pred: #3987e5;
+  --chart-actual: #d95926;
+  --chart-band: #3987e5;
+  --chart-grid: #263042;
+  --chart-axis: #9aa4b5;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}

@@ -34,3 +34,10 @@ Daily AQI forecasting (7-day horizon) for 9 Indian cities. Built in stages (EDA 
 - /history serves out-of-sample h=1 walk-forward predictions (backtest_h1.csv), max 365 days
 - Docker: build from repo root `docker build -f backend/Dockerfile -t aqi-api .`; runs as uid 1000 on port 7860 (HF Spaces)
 - Codespace quirk: container HTTPS hangs (MTU). Build locally with `docker network create --opt com.docker.network.driver.mtu=1200 lowmtu` + `DOCKER_BUILDKIT=0 docker build --network lowmtu ...`
+
+## Frontend (Stage 4)
+- `frontend/` Next.js 15 App Router + Tailwind v4 + Recharts 2 + next-themes (class-based dark mode, tokens in `app/globals.css`)
+- `app/page.tsx` is one client page (fetches from the browser → static site on Vercel); `lib/api.ts` types mirror backend schemas; `lib/aqi.ts` CPCB colours + health tips
+- API base = `NEXT_PUBLIC_API_URL`. In Codespaces use `/backend` (`.env.local`) → Next rewrite proxies to `API_PROXY_TARGET` (default localhost:7860), so the API port can stay private
+- Run: `cd frontend && npm run dev`; check: `npx tsc --noEmit && npm run lint && npm run build`
+- Recharts ResponsiveContainer inside CSS grid needs `min-w-0` on the grid item (Card has it) or charts collapse
